@@ -1,5 +1,4 @@
 {
-    "port": 5000,
     "jwtSecret": "pacuk lina",
     "mongoUri": "mongodb://localhost:27017/shop",
     "baseUrl": "http://localhost:5000"
