@@ -1,17 +1,22 @@
 const ApiError = require('../error/ApiError')
 const service = require('../services/typeService')
-const createTypeRequest = require('../models/requests/createTypeRequest')
 
 class TypeController {
     async create(req, res) {
-        const model = new createTypeRequest(req.body)
-        const type = await service.create(model)
+        const type = await service.create(req.body)
         return await res.json(type)
     }
-
     async getAll(req, res) {
         const types = await service.getAll()
         return res.json(types)
+    }
+    async delete(req, res) {
+        const type = await service.delete(req.params.id)
+        return await res.json(type)    
+    }
+    async put(req, res) {
+        const typeUp = await service.put(req.body)           
+        return res.json(typeUp[1])
     }
 }
 

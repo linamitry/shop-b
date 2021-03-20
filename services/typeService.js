@@ -15,6 +15,26 @@ class TypeService {
            console.log(e); 
         }
     }
+    async delete(id) {
+        try {
+            return await Type.destroy({where: {id}})
+        } catch (e) {
+           console.log(e); 
+        }
+    }
+    async put({id,name}) {
+        try {
+            return await Type.update(
+                {name: name},
+                {
+                    where: {id},
+                    returning: true, 
+                    plain: true
+                })
+        } catch (e) {
+           console.log(e); 
+        }
+    }
     
 }
 
