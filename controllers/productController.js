@@ -43,13 +43,13 @@ class ProductController {
         return await res.json(product)
     }
     async put(req, res) {
-        let {name, price, brandId, typeId, info} = req.body
+        let {id, name, price, brandId, typeId, info} = req.body
         const {img} = req.files
         let fileName = uuid.v4() + '.jpg'
         img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
         // const productUp = await service.put(req.body) 
-        const productUp = await service.put({name, price, brandId, typeId, info, img: fileName})          
+        const productUp = await service.put({id, name, price, brandId, typeId, info, img: fileName})          
 
         return res.json(productUp[1])
     }

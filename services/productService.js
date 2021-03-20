@@ -54,7 +54,7 @@ class ProductService {
                     plain: true
                 })
         } catch (e) {
-           console.log(e); 
+           console.log(e);  
         }
     }
     
