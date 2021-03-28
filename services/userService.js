@@ -1,4 +1,4 @@
-const {User, Cart} = require('../models/models')
+const { User, Cart} = require('../models');
 const ApiError = require('../error/ApiError')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -24,6 +24,7 @@ class UserService {
             const user = await User.create({email, role, password: hashPassword})
             const cart = await Cart.create({userId: user.id})
             const token = generateJwt( user.id, user.email, user.role )
+            console.log('LOGLOGLOG',token);
             return token
 
         } catch (e) {
@@ -69,7 +70,7 @@ class UserService {
            console.log(e); 
         }
     }
-    async put({id,email}) {
+    async update({id,email}) {
         try {
             return await User.update(
                 {email: email},

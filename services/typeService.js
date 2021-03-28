@@ -1,9 +1,10 @@
-const {Type} = require('../models/models')
+const { Type } = require('../models');
+
 
 class TypeService {
     async create(model) {
         try {
-            return await Type.create(model)            
+        return await Type.create(model)            
         } catch (e) {
             console.log(e);
         }
@@ -22,7 +23,7 @@ class TypeService {
            console.log(e); 
         }
     }
-    async put({id,name}) {
+    async update({id,name}) {
         try {
             return await Type.update(
                 {name: name},

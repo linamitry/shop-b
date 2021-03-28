@@ -1,4 +1,5 @@
-const {Brand} = require('../models/models')
+const {Brand} = require('../models')
+
 
 class BrandService {
     async create({name}) {
@@ -22,7 +23,7 @@ class BrandService {
             console.log(e);
         }
     }
-    async put({id,name}) {
+    async update({id,name}) {
         try {
             return await Brand.update(
                 {name},

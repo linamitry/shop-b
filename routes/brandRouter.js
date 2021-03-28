@@ -6,7 +6,7 @@ const checkRole = require('../middleware/authRoleMiddleware')
 router.post('/',  brandController.create)
 router.get('/', brandController.getAll)
 router.delete('/:id', brandController.delete)
-router.put('/', brandController.put)
+router.put('/', brandController.update)
 
 module.exports = router
 

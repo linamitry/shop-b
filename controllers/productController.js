@@ -1,8 +1,8 @@
 const uuid = require('uuid')
 const path = require('path')
 const ApiError = require('../error/ApiError')
-const {Product, ProductInfo} = require('../models/models')
 const service = require('../services/productService')
+
 
 
 
@@ -42,16 +42,22 @@ class ProductController {
         const product = await service.delete(req.params.id)
         return await res.json(product)
     }
-    async put(req, res) {
-        let {id, name, price, brandId, typeId, info} = req.body
-        const {img} = req.files
-        let fileName = uuid.v4() + '.jpg'
-        img.mv(path.resolve(__dirname, '..', 'static', fileName))
+    async update(req, res) {
+        try {
+            let {id, name, price, brandId, typeId, info} = req.body
 
-        // const productUp = await service.put(req.body) 
-        const productUp = await service.put({id, name, price, brandId, typeId, info, img: fileName})          
+            let fileName
+            if (req.files) {
+                const {img} = req.files
+                fileName = uuid.v4() + '.jpg'
+                img.mv(path.resolve(__dirname, '..', 'static', fileName))
+            }
+            const productUp = await service.update({id, name, price, brandId, typeId, info, img: fileName})
+            return res.json(productUp[1])
 
-        return res.json(productUp[1])
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 

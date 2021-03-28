@@ -14,8 +14,8 @@ class BrandController {
         const brand = await service.delete(req.params.id)
         return await res.json(brand)
     }
-    async put(req, res) {
-        const brandUp = await service.put(req.body)           
+    async update(req, res) {
+        const brandUp = await service.update(req.body)           
         return res.json(brandUp[1])
     }
 }

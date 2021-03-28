@@ -25,8 +25,8 @@ class UserController {
         const user = await service.delete(req.params.id)
         return await res.json(user)
     }
-    async put(req, res) {
-        const userUp = await service.put(req.body)           
+    async update(req, res) {
+        const userUp = await service.update(req.body)           
         return res.json(userUp[1])
     }
 }

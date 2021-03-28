@@ -1,4 +1,6 @@
-const {Product, ProductInfo} = require('../models/models')
+const uuid = require('uuid')
+const path = require('path')
+const { Product, ProductInfo } = require('../models');
 
 class ProductService {
     async create({name, price, brandId, typeId, info, img: fileName}) {
@@ -44,7 +46,7 @@ class ProductService {
            console.log(e); 
         }
     }
-    async put({id, name, price, brandId, typeId, info, img: fileName}) {
+    async update({id, name, price, brandId, typeId, info, img: fileName}) {
         try {
             return await Product.update(
                 {name, price, brandId, typeId, info, img: fileName},

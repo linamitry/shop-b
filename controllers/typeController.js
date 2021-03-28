@@ -14,10 +14,12 @@ class TypeController {
         const type = await service.delete(req.params.id)
         return await res.json(type)    
     }
-    async put(req, res) {
-        const typeUp = await service.put(req.body)           
+    async update(req, res) {
+        const typeUp = await service.update(req.body)           
         return res.json(typeUp[1])
     }
 }
 
 module.exports = new TypeController()
+
+
